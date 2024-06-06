@@ -1,9 +1,0 @@
-{
-  "network": "kovan",
-  "aaveGovernanceV2Address": "0xc2eBaB3Bac8f2f5028f5C7317027A41EBFCa31D2",
-  "aaveGovernanceV2StartBlock": 22534400,
-  "aaveTokenV2Address": "0xB597cd8D3217ea6477232F9217fa70837ff667Af",
-  "aaveTokenV2StartBlock": 21276980,
-  "aaveStakeTokenAddress": "0xf2fbf9A6710AfDa1c4AaB2E922DE9D69E0C97fd2",
-  "aaveStakeTokenStartBlock": 21277140
-}

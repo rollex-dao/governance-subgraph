@@ -1,0 +1,9 @@
+{
+  "network": "syscoin",
+  "aaveGovernanceV2Address": "0x46177D5023f5b374bB42af4742Af4B86175E43E5",
+  "aaveGovernanceV2StartBlock": 14820769,
+  "aaveTokenV2Address": "0x2e4E66249F64cE8e7Ec04Aa7196D3f1c09851B65",
+  "aaveTokenV2StartBlock": 14820769,
+  "aaveStakeTokenAddress": "0x2e4E66249F64cE8e7Ec04Aa7196D3f1c09851B65",
+  "aaveStakeTokenStartBlock": 14820769
+}
