@@ -1,40 +1,42 @@
-# Subgraph for Aave Protocol V2
+# Rex Governance Subgraph
 
-https://thegraph.com/hosted-service/subgraph/aave/governance-delegation
+This subgraph indexes and provides query capabilities for the Rex Governance protocol on the Rollux network.
+
+## Prerequisites
+
+- Node.js (v14.x or later)
+- Yarn
+- The Graph CLI (`@graphprotocol/graph-cli`)
+
+## Quick Start
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/your-username/rex-governance-subgraph.git
+   cd rex-governance-subgraph
+   ```
+
+2. Install dependencies:
+
+   ```sh
+   yarn install
+   ```
+
+3. Build the subgraph:
+
+   ```sh
+   yarn run generate-types
+   yarn run codegen
+   yarn run build
+   ```
 
 ## Development
 
-```bash
-# copy env and adjust its content
-cp .env.test .env
-# fetch current contracts as submodule
-npm run prepare:all
-# run codegen
-npm run subgraph:codegen
-# now you're able to deploy to thegraph via
-npm run deploy:hosted:mainnet
+- Modify `subgraph.yaml`, `schema.graphql`, or files in `src/` as needed.
+- Rebuild and redeploy after changes.
 
-```
+## Troubleshooting
 
-## Deployment
-
-To be able to deploy the subgraph in any environment for any network first we will need to prepare the local env:
-
-- get the governance v2 contracts and compile them
-
-```
-npm run prepare:contracts
-```
-
-
-### Hosted
-
-To be able to deploy to the hosted solution you will need to create a .env file and add `ACCESS_TOKEN` environment variable. You can find this in the dashboard of the TheGraph
-
-```
-// For Kovan:
-npm run deploy:hosted:kovan
-
-// For Mainnet:
-npm run deploy:hosted:mainnet
-```
+- Ensure contract addresses and start blocks are correct in `subgraph.yaml`.
+- Verify authentication and Graph Node accessibility.

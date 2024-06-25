@@ -1,0 +1,90 @@
+specVersion: 0.0.4
+description: Rex governance V2 subgraph
+repository: https://github.com/rollex-dao/governance-subgraph
+schema:
+  file: ./schema.graphql
+features:
+  - ipfsOnEthereumContracts
+dataSources:
+  - kind: ethereum/contract
+    name: RexGovernanceV2
+    network: syscoin
+    source:
+      abi: RexGovernanceV2
+      address: '0x46177D5023f5b374bB42af4742Af4B86175E43E5'
+      startBlock: 14820769
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Proposal
+        - Vote
+        - Executor
+      abis:
+        - name: RexGovernanceV2
+          file: ./node_modules/@pollum-io/rollex-governance/artifacts/contracts/governance/RexGovernanceV2.sol/RexGovernanceV2.json
+        - name: IExecutor
+          file: ./node_modules/@pollum-io/rollex-governance/artifacts/contracts/governance/Executor.sol/Executor.json
+        - name: GovernanceStrategy
+          file: ./node_modules/@pollum-io/rollex-governance/artifacts/contracts/governance/GovernanceStrategy.sol/GovernanceStrategy.json
+      eventHandlers:
+        - event: ProposalCreated(uint256,indexed address,indexed address,address[],uint256[],string[],bytes[],bool[],uint256,uint256,address,bytes32)
+          handler: handleProposalCreated
+        - event: ProposalCanceled(uint256)
+          handler: handleProposalCanceled
+        - event: ProposalQueued(uint256,uint256,indexed address)
+          handler: handleProposalQueued
+        - event: ProposalExecuted(uint256,indexed address)
+          handler: handleProposalExecuted
+        - event: VoteEmitted(uint256,indexed address,bool,uint256)
+          handler: handleVoteEmitted
+        - event: ExecutorAuthorized(address)
+          handler: handleExecutorAuthorized
+        - event: ExecutorUnauthorized(address)
+          handler: handleExecutorUnauthorized
+      file: ./src/mapping/governance.ts
+  - kind: ethereum/contract
+    name: RexTokenV2
+    network: syscoin
+    source:
+      abi: RexTokenV2
+      address: '0x2e4E66249F64cE8e7Ec04Aa7196D3f1c09851B65'
+      startBlock: 14820769
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Delegate
+      abis:
+        - name: RexTokenV2
+          file: ./node_modules/@pollum-io/rollex-token/artifacts/contracts/token/RexTokenV2.sol/RexTokenV2.json
+      eventHandlers:
+        - event: DelegateChanged(indexed address,indexed address,uint8)
+          handler: handleDelegateChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping/rex-token.ts
+  - kind: ethereum/contract
+    name: StakedTokenV3
+    network: syscoin
+    source:
+      abi: StakedTokenV3
+      address: '0x2e4E66249F64cE8e7Ec04Aa7196D3f1c09851B65'
+      startBlock: 14820769
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Delegate
+      abis:
+        - name: StakedTokenV3
+          file: ./node_modules/@pollum-io/rex-stake/artifacts/contracts/stake/StakedREXV3.sol/StakedREXV3.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: DelegateChanged(indexed address,indexed address,uint8)
+          handler: handleDelegateChanged
+      file: ./src/mapping/stake.ts

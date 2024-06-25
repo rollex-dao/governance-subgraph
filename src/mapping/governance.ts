@@ -8,8 +8,8 @@ import {
   NA,
 } from '../utils/constants';
 import { Proposal, Vote, Executor } from '../../generated/schema';
-import { IExecutor } from '../../generated/AaveGovernanceV2/IExecutor';
-import { GovernanceStrategy } from '../../generated/AaveGovernanceV2/GovernanceStrategy';
+import { IExecutor } from '../../generated/RexGovernanceV2/IExecutor';
+import { GovernanceStrategy } from '../../generated/RexGovernanceV2/GovernanceStrategy';
 import {
   ProposalCreated,
   VoteEmitted,
@@ -18,7 +18,7 @@ import {
   ProposalCanceled,
   ExecutorAuthorized,
   ExecutorUnauthorized,
-} from '../../generated/AaveGovernanceV2/AaveGovernanceV2';
+} from '../../generated/RexGovernanceV2/RexGovernanceV2';
 import { getOrInitProposal, getOrInitDelegate } from '../helpers/initializers';
 
 function getProposal(proposalId: string, fn: string): Proposal | null {
@@ -56,10 +56,10 @@ export function handleProposalCreated(event: ProposalCreated): void {
   if (author) {
     proposal.author = author.toString();
   }
-  if (!discussions.isNull() && discussions.kind == JSONValueKind.STRING) {
+  if (discussions && !discussions.isNull() && discussions.kind == JSONValueKind.STRING) {
     proposal.discussions = discussions.toString();
   }
-  if (!aipNumber.isNull() && aipNumber.kind == JSONValueKind.NUMBER) {
+  if (aipNumber && !aipNumber.isNull() && aipNumber.kind == JSONValueKind.NUMBER) {
     proposal.aipNumber = aipNumber.toBigInt();
   }
   if (shortDescription) {
@@ -81,7 +81,7 @@ export function handleProposalCreated(event: ProposalCreated): void {
   creator.save();
   proposal.user = creator.id;
   proposal.executor = event.params.executor.toHexString();
-  proposal.targets = event.params.targets as Bytes[];
+  proposal.targets = event.params.targets.map<Bytes>(t => t as Bytes);
   proposal.values = event.params.values;
   proposal.signatures = event.params.signatures;
   proposal.calldatas = event.params.calldatas;
@@ -164,7 +164,7 @@ export function handleVoteEmitted(event: VoteEmitted): void {
   voterDel.numVotes = voterDel.numVotes + 1;
   voterDel.save();
   let id = event.params.voter.toHexString() + ':' + event.params.id.toString();
-  let vote = Vote.load(id) || new Vote(id);
+  let vote = new Vote(id);
   vote.proposal = event.params.id.toString();
   vote.support = event.params.support;
   vote.user = voterDel.id;

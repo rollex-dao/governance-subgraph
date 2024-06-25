@@ -9,11 +9,11 @@ export function getOrInitDelegate(id: string, createIfNotFound: boolean = true):
   if (delegate == null && createIfNotFound) {
     delegate = new Delegate(id);
 
-    delegate.aaveBalanceRaw = BIGINT_ZERO;
-    delegate.aaveBalance = BIGDECIMAL_ZERO;
+    delegate.rexBalanceRaw = BIGINT_ZERO;
+    delegate.rexBalance = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveBalanceRaw = BIGINT_ZERO;
-    delegate.stkAaveBalance = BIGDECIMAL_ZERO;
+    delegate.stkRexBalanceRaw = BIGINT_ZERO;
+    delegate.stkRexBalance = BIGDECIMAL_ZERO;
 
     delegate.totalVotingPowerRaw = BIGINT_ZERO;
     delegate.totalVotingPower = BIGDECIMAL_ZERO;
@@ -21,50 +21,50 @@ export function getOrInitDelegate(id: string, createIfNotFound: boolean = true):
     delegate.totalPropositionPowerRaw = BIGINT_ZERO;
     delegate.totalPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveTotalVotingPowerRaw = BIGINT_ZERO;
-    delegate.aaveTotalVotingPower = BIGDECIMAL_ZERO;
+    delegate.rexTotalVotingPowerRaw = BIGINT_ZERO;
+    delegate.rexTotalVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveTotalPropositionPowerRaw = BIGINT_ZERO;
-    delegate.aaveTotalPropositionPower = BIGDECIMAL_ZERO;
+    delegate.rexTotalPropositionPowerRaw = BIGINT_ZERO;
+    delegate.rexTotalPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveDelegatedInVotingPowerRaw = BIGINT_ZERO;
-    delegate.aaveDelegatedInVotingPower = BIGDECIMAL_ZERO;
+    delegate.rexDelegatedInVotingPowerRaw = BIGINT_ZERO;
+    delegate.rexDelegatedInVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveDelegatedOutVotingPowerRaw = BIGINT_ZERO;
-    delegate.aaveDelegatedOutVotingPower = BIGDECIMAL_ZERO;
+    delegate.rexDelegatedOutVotingPowerRaw = BIGINT_ZERO;
+    delegate.rexDelegatedOutVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveDelegatedInPropositionPowerRaw = BIGINT_ZERO;
-    delegate.aaveDelegatedInPropositionPower = BIGDECIMAL_ZERO;
+    delegate.rexDelegatedInPropositionPowerRaw = BIGINT_ZERO;
+    delegate.rexDelegatedInPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.aaveDelegatedOutPropositionPowerRaw = BIGINT_ZERO;
-    delegate.aaveDelegatedOutPropositionPower = BIGDECIMAL_ZERO;
+    delegate.rexDelegatedOutPropositionPowerRaw = BIGINT_ZERO;
+    delegate.rexDelegatedOutPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveTotalVotingPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveTotalVotingPower = BIGDECIMAL_ZERO;
+    delegate.stkRexTotalVotingPowerRaw = BIGINT_ZERO;
+    delegate.stkRexTotalVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveTotalPropositionPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveTotalPropositionPower = BIGDECIMAL_ZERO;
+    delegate.stkRexTotalPropositionPowerRaw = BIGINT_ZERO;
+    delegate.stkRexTotalPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveDelegatedInVotingPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveDelegatedInVotingPower = BIGDECIMAL_ZERO;
+    delegate.stkRexDelegatedInVotingPowerRaw = BIGINT_ZERO;
+    delegate.stkRexDelegatedInVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveDelegatedOutVotingPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveDelegatedOutVotingPower = BIGDECIMAL_ZERO;
+    delegate.stkRexDelegatedOutVotingPowerRaw = BIGINT_ZERO;
+    delegate.stkRexDelegatedOutVotingPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveDelegatedInPropositionPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveDelegatedInPropositionPower = BIGDECIMAL_ZERO;
+    delegate.stkRexDelegatedInPropositionPowerRaw = BIGINT_ZERO;
+    delegate.stkRexDelegatedInPropositionPower = BIGDECIMAL_ZERO;
 
-    delegate.stkAaveDelegatedOutPropositionPowerRaw = BIGINT_ZERO;
-    delegate.stkAaveDelegatedOutPropositionPower = BIGDECIMAL_ZERO;
+    delegate.stkRexDelegatedOutPropositionPowerRaw = BIGINT_ZERO;
+    delegate.stkRexDelegatedOutPropositionPower = BIGDECIMAL_ZERO;
 
     delegate.usersVotingRepresentedAmount = 1;
     delegate.usersPropositionRepresentedAmount = 1;
 
-    delegate.aaveVotingDelegate = id;
-    delegate.aavePropositionDelegate = id;
+    delegate.rexVotingDelegate = id;
+    delegate.rexPropositionDelegate = id;
 
-    delegate.stkAaveVotingDelegate = id;
-    delegate.stkAavePropositionDelegate = id;
+    delegate.stkRexVotingDelegate = id;
+    delegate.stkRexPropositionDelegate = id;
 
     delegate.numVotes = zeroBI().toI32();
     delegate.numProposals = zeroBI().toI32();

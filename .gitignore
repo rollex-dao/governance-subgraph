@@ -4,7 +4,6 @@ dist/
 .idea
 .vscode
 .env
-subgraph.yaml
 generated/
 .editorconfig
 src/contracts/

@@ -96,8 +96,8 @@ enum PowerType {
 }
 
 enum VotingAsset {
-  Aave
-  StkAave
+  Rex
+  StkRex
 }
 
 type Delegation implements Action @entity {
@@ -111,24 +111,24 @@ type Delegation implements Action @entity {
   asset: VotingAsset!
 }
 
-# Address which holds governance tokens (AAVE, stkAAVE) or has been delegated voting or proposition power from another address
+# Address which holds governance tokens (REX, stkREX) or has been delegated voting or proposition power from another address
 type Delegate @entity {
   "Wallet address"
   id: ID!
 
-  "AAVE Balance"
-  aaveBalanceRaw: BigInt!
-  aaveBalance: BigDecimal!
+  "REX Balance"
+  rexBalanceRaw: BigInt!
+  rexBalance: BigDecimal!
 
-  "stkAAVE Balance"
-  stkAaveBalanceRaw: BigInt!
-  stkAaveBalance: BigDecimal!
+  "stkREX Balance"
+  stkRexBalanceRaw: BigInt!
+  stkRexBalance: BigDecimal!
 
-  "aaveTotalVotingPower + stkAaveTotalVotingPower"
+  "rexTotalVotingPower + stkRexTotalVotingPower"
   totalVotingPowerRaw: BigInt!
   totalVotingPower: BigDecimal!
 
-  "aaveDelegatedPropositionPower + stkAaveDelegatedPropositionPower"
+  "rexDelegatedPropositionPower + stkRexDelegatedPropositionPower"
   totalPropositionPowerRaw: BigInt!
   totalPropositionPower: BigDecimal!
 
@@ -142,50 +142,50 @@ type Delegate @entity {
   delegations: [Delegation!]! @derivedFrom(field: "user")
 
   "Delegate who will vote or propose on user's behalf"
-  aaveVotingDelegate: Delegate!
-  aavePropositionDelegate: Delegate!
+  rexVotingDelegate: Delegate!
+  rexPropositionDelegate: Delegate!
 
-  "aaveBalance + aaveDelegatedInVotingPower - aaveDelegatedOutVotingPower"
-  aaveTotalVotingPowerRaw: BigInt!
-  aaveTotalVotingPower: BigDecimal!
+  "rexBalance + rexDelegatedInVotingPower - rexDelegatedOutVotingPower"
+  rexTotalVotingPowerRaw: BigInt!
+  rexTotalVotingPower: BigDecimal!
 
-  aaveTotalPropositionPowerRaw: BigInt!
-  aaveTotalPropositionPower: BigDecimal!
+  rexTotalPropositionPowerRaw: BigInt!
+  rexTotalPropositionPower: BigDecimal!
 
-  aaveDelegatedInVotingPowerRaw: BigInt!
-  aaveDelegatedInVotingPower: BigDecimal!
+  rexDelegatedInVotingPowerRaw: BigInt!
+  rexDelegatedInVotingPower: BigDecimal!
 
-  aaveDelegatedOutVotingPowerRaw: BigInt!
-  aaveDelegatedOutVotingPower: BigDecimal!
+  rexDelegatedOutVotingPowerRaw: BigInt!
+  rexDelegatedOutVotingPower: BigDecimal!
 
-  aaveDelegatedInPropositionPowerRaw: BigInt!
-  aaveDelegatedInPropositionPower: BigDecimal!
+  rexDelegatedInPropositionPowerRaw: BigInt!
+  rexDelegatedInPropositionPower: BigDecimal!
 
-  aaveDelegatedOutPropositionPowerRaw: BigInt!
-  aaveDelegatedOutPropositionPower: BigDecimal!
+  rexDelegatedOutPropositionPowerRaw: BigInt!
+  rexDelegatedOutPropositionPower: BigDecimal!
 
   "Delegate who will vote or propose on user's behalf"
-  stkAaveVotingDelegate: Delegate!
-  stkAavePropositionDelegate: Delegate!
+  stkRexVotingDelegate: Delegate!
+  stkRexPropositionDelegate: Delegate!
 
-  "stkAaveBalance + stkAaveDelegatedInVotingPower - stkAaveDelegatedOutVotingPower"
-  stkAaveTotalVotingPowerRaw: BigInt!
-  stkAaveTotalVotingPower: BigDecimal!
+  "stkRexBalance + stkRexDelegatedInVotingPower - stkRexDelegatedOutVotingPower"
+  stkRexTotalVotingPowerRaw: BigInt!
+  stkRexTotalVotingPower: BigDecimal!
 
-  stkAaveTotalPropositionPowerRaw: BigInt!
-  stkAaveTotalPropositionPower: BigDecimal!
+  stkRexTotalPropositionPowerRaw: BigInt!
+  stkRexTotalPropositionPower: BigDecimal!
 
-  stkAaveDelegatedInVotingPowerRaw: BigInt!
-  stkAaveDelegatedInVotingPower: BigDecimal!
+  stkRexDelegatedInVotingPowerRaw: BigInt!
+  stkRexDelegatedInVotingPower: BigDecimal!
 
-  stkAaveDelegatedOutVotingPowerRaw: BigInt!
-  stkAaveDelegatedOutVotingPower: BigDecimal!
+  stkRexDelegatedOutVotingPowerRaw: BigInt!
+  stkRexDelegatedOutVotingPower: BigDecimal!
 
-  stkAaveDelegatedInPropositionPowerRaw: BigInt!
-  stkAaveDelegatedInPropositionPower: BigDecimal!
+  stkRexDelegatedInPropositionPowerRaw: BigInt!
+  stkRexDelegatedInPropositionPower: BigDecimal!
 
-  stkAaveDelegatedOutPropositionPowerRaw: BigInt!
-  stkAaveDelegatedOutPropositionPower: BigDecimal!
+  stkRexDelegatedOutPropositionPowerRaw: BigInt!
+  stkRexDelegatedOutPropositionPower: BigDecimal!
 
   "Number of users represented for voting"
   usersVotingRepresentedAmount: Int!
